@@ -1,0 +1,19 @@
+{
+    "nodes":[
+          {"id":"Mouwaffak Hagui","group":1},
+          {"id":"Jelel Fliss","group":2},
+          {"id":"Marwen Jaziri","group":2},
+          {"id":"Layth Jaber","group":3},
+          {"id":"Siwar Soula","group":5},
+          {"id":"Emeni Jomaa","groupe":2},
+          {"id":"Wajdi Dimassi","groupe":2},
+          {"id":"Raed Hadj Youssef","groupe":2},
+          {"id":"Mehdi Ellouze","groupe":2},
+          {"id":"Achraf Chaibi","groupe":2},
+          {"id":"Zaid Selmi","groupe":2}
+      ],
+      "links":[
+          {"source":2,"target":1,"weight":1},
+          {"source":0,"target":2,"weight":3}
+      ]
+  }

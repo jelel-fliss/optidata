@@ -51,14 +51,14 @@ var link = container.append("g").attr("class", "links")
     .enter()
     .append("line")
     .attr("stroke", "#aaa")
-    .attr("stroke-width", "1px");
+    .attr("stroke-width", "2px");
 
 var node = container.append("g").attr("class", "nodes")
     .selectAll("g")
     .data(graph.nodes)
     .enter()
     .append("circle")
-    .attr("r", 5)
+    .attr("r", function(d){ return 5})
     .attr("fill", function(d) { return color(d.group); })
 
 
@@ -77,8 +77,6 @@ var labelNode = container.append("g").attr("class", "labelNodes")
     .append("text")
     .text(function(d, i) { return null; })
     .style("fill", "#555")
-    .style("font-family", "Arial")
-    .style("font-size", 12)
     .style("pointer-events", "none"); // to prevent mouseover/drag capture
 
 

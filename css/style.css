@@ -1,0 +1,46 @@
+.title {
+  margin: 20px;
+}
+
+.list {
+  margin: 0;
+}
+.link {
+  stroke: #aaa;
+}
+
+.node text {
+  stroke: rgb(51, 51, 51);
+  cursos: pointer;
+}
+
+.node circle {
+  stroke: white;
+  stroke-width: 1px;
+  
+}
+
+#logo {
+  width: 100px;
+}
+
+.consultant-container{
+	margin: 30px;
+	border-radius: 25px;
+	height: 500px;
+	width: 100%;
+	background-color: gainsboro;
+}
+
+.avatar-container{
+	text-align: center;
+}
+
+.avatar {
+	margin: 20px;
+	vertical-align: middle;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	
+  }

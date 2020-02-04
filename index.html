@@ -1,78 +1,49 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
-<style>
 
-.link {
-  stroke: #aaa;
-}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- JQUERY CSS -->
+<link rel="stylesheet" href="./css/jquery-ui.min.css">
+<link rel="stylesheet" href="./css/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="./css/jquery-ui.theme.min.css">
+<!-- Custom styling -->
+<link rel="stylesheet" href="./css/style.css">
 
-.node text {
-stroke:rgb(51, 51, 51);
-cursos:pointer;
-}
-
-.node circle{
-stroke:white;
-stroke-width:1px;
-fill:rgb(245, 51, 2);
-}
-
-</style>
 <body>
-    <header>
-        <nav> <img src="./logo.jpg" style="height: 70px;"> </nav>
-    </header>
-<script>
+    <nav class="navbar navbar-default" style="background-color:rgb(255, 174, 97)">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img id="logo" src="assets/logo.png"></a>
+        </div>
+    </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        
+        <div class="btn-group-vertical">
+          
+          
+        </div>
+      </div>
+      <div class="col-6 svg-area">
+        
+      </div>
+      <div class="col">
+        <div class="container consultant-container">
+          <div class="avatar-container">
+            <img src="./assets/avatars/Jelel.png" alt="Avatar" class="avatar">
+          </div> 
 
-var width = 960,
-    height = 500
+        </div>
+        
+      </div>
+    </div>
+  </div>
+ <script src="js/main.js"></script>
+ <script src="js/jquery.min.js"></script>
+ <script src="js/jquery-ui.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
 
-var force = d3.layout.force()
-    .gravity(.05)
-    .distance(100)
-    .charge(-100)
-    .size([width, height]);
 
-d3.json("graphFile.json", function(json) {
-  force
-      .nodes(json.nodes)
-      .links(json.links)
-      .start();
-
-  var link = svg.selectAll(".link")
-      .data(json.links)
-    .enter().append("line")
-      .attr("class", "link")
-    .style("stroke-width", function(d) { return Math.sqrt(d.weight); });
-
-  var node = svg.selectAll(".node")
-      .data(json.nodes)
-    .enter().append("g")
-      .attr("class", "node")
-      .call(force.drag);
-
-  node.append("circle")
-      .attr("r","5");
-
-  node.append("text")
-      .attr("dx", 12)
-      .attr("dy", ".35em")
-      .text(function(d) { return d.name });
-
-  force.on("tick", function() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
-
-    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-  });
-});
-
-</script>
 

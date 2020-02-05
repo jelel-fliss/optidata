@@ -4,7 +4,9 @@ var height = 500;
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 var node_selected = false;
 
-
+function detect_project(data){
+    console.log(data);
+}
 
 
 
@@ -67,6 +69,9 @@ var node = container.append("g").attr("class", "nodes")
     .attr("r", function(d){ return 5})
     .attr("fill", function(d) { return color(d.group); })
     .on("click",function(d){ 
+        if (d.group==3 | d.group==4){
+            detect_project(d);
+        }
         d3.select(this).attr("r",10);
         return info_update(d)})
     .on("mouseover",function(d){
@@ -100,16 +105,8 @@ var labelNode = container.append("g").attr("class", "labelNodes")
 function info_update(data){
 
     $(".avatar").attr("src","./assets/avatars/"+data.id+".png");
-    /*if ($(".avatar".attr("width"))<100){
-        console.log("Not Found !")
-    }*/
-
-
     $(".Name").text(data.id);
-    
-    console.log( $(".avatar").attr("src"));
-
-    
+   
 }
 
 function ticked() {

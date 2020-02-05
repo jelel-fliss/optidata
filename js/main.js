@@ -2,6 +2,9 @@ $( document ).ready(function() {
     var width = 560;
 var height = 500;
 var color = d3.scaleOrdinal(d3.schemeCategory10);
+var node_selected = false;
+
+
 
 
 
@@ -63,7 +66,17 @@ var node = container.append("g").attr("class", "nodes")
     .append("circle")
     .attr("r", function(d){ return 5})
     .attr("fill", function(d) { return color(d.group); })
-    .on("click",function(d){ return info_update(d)});
+    .on("click",function(d){ 
+        d3.select(this).attr("r",10);
+        return info_update(d)})
+    .on("mouseover",function(d){
+        d3.select(this).attr("r",7);
+    })
+    .on("mouseout",function(d){
+        d3.select(this).attr("r",5);
+    })
+    .attr("stroke","#fff");
+    
 
 
 
@@ -100,8 +113,6 @@ function info_update(data){
 }
 
 function ticked() {
-
-    
 
     node.call(updateNode);
     link.call(updateLink);

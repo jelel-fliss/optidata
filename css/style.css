@@ -46,11 +46,17 @@ svg{
 	border-style: solid;
 	border-width: 1px;
 	border-color: grey;
+	margin-top: 60px;
 	
+}
+
+.navbar{
+	background-image: linear-gradient(to right, rgb(32, 32, 32) , rgb(68, 68, 68));
 }
 
 .avatar-container{
 	text-align: center;
+	
 }
 
 .avatar {
@@ -83,12 +89,12 @@ svg{
 
 
 .extern:hover{
-	background-color: rgb(0, 255, 85);
+	background-color: rgb(23, 185, 2);
 	border-color: rgb(0, 255, 42);
 }
 
 .intern:hover{
-	background-color: rgb(255, 8, 0);
+	background-color: rgb(247, 44, 44);
 	border-color: rgb(236, 57, 51);
 }
 

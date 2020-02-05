@@ -1,7 +1,9 @@
-
-var width = 560;
+$( document ).ready(function() {
+    var width = 560;
 var height = 500;
 var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+
 
 d3.json("js/data/graphFile.json").then(function(graph) {
 
@@ -30,6 +32,7 @@ var graphLayout = d3.forceSimulation(graph.nodes)
     .force("y", d3.forceY(height / 2).strength(1))
     .force("link", d3.forceLink(graph.links).id(function(d) {return d.id; }).distance(50).strength(1))
     .on("tick", ticked);
+    
 
 var adjlist = [];
 
@@ -60,6 +63,7 @@ var node = container.append("g").attr("class", "nodes")
     .append("circle")
     .attr("r", function(d){ return 5})
     .attr("fill", function(d) { return color(d.group); })
+    .on("click",function(d){ return info_update(d)});
 
 
 
@@ -80,7 +84,24 @@ var labelNode = container.append("g").attr("class", "labelNodes")
     .style("pointer-events", "none"); // to prevent mouseover/drag capture
 
 
+function info_update(data){
+
+    $(".avatar").attr("src","./assets/avatars/"+data.id+".png");
+    /*if ($(".avatar".attr("width"))<100){
+        console.log("Not Found !")
+    }*/
+
+
+    $(".Name").text(data.id);
+    
+    console.log( $(".avatar").attr("src"));
+
+    
+}
+
 function ticked() {
+
+    
 
     node.call(updateNode);
     link.call(updateLink);
@@ -146,4 +167,7 @@ function dragended(d) {
 }
 
 }); // d3.json
+
+
+});
 

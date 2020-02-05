@@ -30,7 +30,7 @@ svg{
 
 .node text {
   stroke: rgb(51, 51, 51);
-  cursos: pointer;
+  cursor: pointer;
 }
 
 .node circle {

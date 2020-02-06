@@ -82,7 +82,7 @@
         "group": 3
       },
       {
-        "id": "KDmotion",
+        "id": "KD Motion",
         "group": 3
       },
       {
@@ -94,15 +94,15 @@
         "group": 3
       },
       {
-        "id": "AutoBelCompany",
+        "id": "AutoBel Company",
         "group": 3
       },
       {
-        "id": "NovaHomeNature",
+        "id": "NovaHome Nature",
         "group": 3
       },
       {
-        "id": "Newmed",
+        "id": "NewMed",
         "group": 3
       },
       {
@@ -110,11 +110,11 @@
         "group": 4
       },
       {
-        "id": "RH",
+        "id": "Application RH",
         "group": 4
       },
       {
-        "id": "Chatbot",
+        "id": "OptiBot",
         "group": 4
       }
       ,
@@ -124,7 +124,7 @@
       }
       ,
       { 
-        "id": "SiteWebOptima",
+        "id": "Site Web Optima",
         "group": 4
       }
     ],
@@ -181,78 +181,83 @@
       },
       {
         "source": "Omar Hamza",
-        "target": "Newmed",
+        "target": "NewMed",
         "value": 1
       },
       {
         "source": "Mehdi Ellouze",
-        "target": "Newmed",
+        "target": "NewMed",
         "value": 1
       },
       {
         "source": "Mouwaffak Hagui",
-        "target": "Newmed",
+        "target": "NewMed",
         "value": 1
       },
       {
         "source": "Mouwaffak Hagui",
-        "target": "KDmotion",
+        "target": "KD Motion",
         "value": 1
       },
       {
         "source": "Omar Hamza",
-        "target": "NovaHomeNature",
+        "target": "NovaHome Nature",
+        "value": 1
+      },
+      {
+        "source": "Emeni Jomaa",
+        "target": "NovaHome Nature",
         "value": 1
       },
       {
         "source": "Mouwaffak Hagui",
-        "target": "NovaHomeNature",
+        "target": "NovaHome Nature",
         "value": 1
       },
       
       {
         "source": "Yasmine Gmati",
-        "target": "AutoBelCompany",
+        "target": "AutoBel Company",
         "value": 1
       },
       {
         "source": "Mehdi Ellouze",
-        "target": "AutoBelCompany",
+        "target": "AutoBel Company",
         "value": 1
       },
       {
         "source": "Layth Jabber",
-        "target": "RH",
+        "target": "Application RH",
         "value": 1
       },
       {
         "source": "Mouwaffak Hagui",
-        "target": "RH",
+        "target": "Application RH",
         "value": 1
       },
       {
         "source": "Emeni Jomaa",
-        "target": "RH",
+        "target": "Application RH",
         "value": 1
       },
       {
         "source": "Jelel Fliss",
-        "target": "RH",
+        "target": "Application RH",
         "value": 1
       },
       {
         "source": "Achraf Chaibi",
-        "target": "Chatbot",
+        "target": "OptiBot",
         "value": 1
       },
       {
         "source": "Aymen Trabelsi",
-        "target": "Chatbot",
+        "target": "OptiBot",
         "value": 1
       },
       {
         "source": "Moez Zhioua",
-        "target": "Chatbot",
+        "target": "OptiBot",
         "value": 1
       },
       {
@@ -287,7 +292,7 @@
       },
       {
         "source": "Mouwaffak Hagui",
-        "target": "SiteWebOptima",
+        "target": "Site Web Optima",
         "value": 1
       }
 

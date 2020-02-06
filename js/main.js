@@ -132,10 +132,7 @@ $(document).ready(function() {
       .style("fill", "#555")
       .style("pointer-events", "none"); // to prevent mouseover/drag capture
 
-    function info_update(data) {
-      $(".avatar").attr("src", "./assets/avatars/" + data.id + ".png");
-      $(".Name").text(data.id);
-    }
+    
 
     function ticked() {
       node.call(updateNode);
@@ -245,4 +242,11 @@ function coloring_link_project(project){
       }
 
     })
+    $(".avatar").attr("src", "./assets/avatars/" + project + ".png");
+    $(".Name").text(project);
+}
+
+function info_update(data) {
+  $(".avatar").attr("src", "./assets/avatars/" + data.id + ".png");
+  $(".Name").text(data.id);
 }

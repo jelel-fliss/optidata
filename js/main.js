@@ -212,7 +212,7 @@ $(document).ready(function() {
       if ((data.group == 3) | (data.group == 4)) {
 
         coloring_link_project(data.id);
-        button_translation(data.id);
+        
         
         
       }
@@ -227,7 +227,7 @@ $(document).ready(function() {
   
 });
 
-function button_translation(project_btn){
+function button_translation(project){
   //$(project_btn).css("left",14); Works !
 
   //console.log("Button Translation Function Called ! Button should translate !");
@@ -240,7 +240,23 @@ function button_translation(project_btn){
 
   
   //button.style.transform(14, 0);
-  $(".Fatma_Tours_btn").css("left",14);
+  var all_btns;
+  all_btns = $(".btn");
+  $.each(all_btns, function(i,x){
+    // x = btn
+    if (x.getAttribute("id").includes(project)){
+      x.style.transform = "translate(14px,0)";
+      x.style.backgroundColor = "rgb(57, 207, 90)";
+      x.style.borderColor = "rgb(0, 255, 42)";
+    };
+    /*else{
+      //x.style.backgroundColor = "rgb(255, 167, 85)";
+      //x.style.borderColor = "rgb(255, 173, 66)";
+      //
+      console.log("");
+    }*/
+  })
+  //$(".Fatma Tours_btn").css("left",14);
 }
 
 
@@ -265,7 +281,9 @@ function coloring_link_project(project){
     $(".avatar").attr("src", "./assets/avatars/" + project + ".png");
     $(".Name").text(project);
 
-    button_translation("Fatma_Tours_btn");
+    
+
+    button_translation(project+"_btn");
     //console.log($(".Fatma_Tours_btn"));
 }
 

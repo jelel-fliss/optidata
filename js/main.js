@@ -77,11 +77,11 @@ $(document).ready(function() {
           return "#aaa";
       })
       .attr("id",function(d,i){
-          return "link_"+i;
+          return d.source.id+"_to_"+d.target.id;
       })
       .attr("class",function(d){
           
-          return d.source.id+"_to_"+d.target.id;
+          return "project_relation";
       })
       .attr("stroke-width", "2px");
 
@@ -100,6 +100,20 @@ $(document).ready(function() {
       })
       .on("click", function(d) {
         if ((d.group == 3) | (d.group == 4)) {
+
+          var target_lines = [];
+          var all_lines = $("line");
+
+          $.each(all_lines, function(i,x){
+            
+            if( x.id.includes(d.id)){
+              x.style.stroke="red";
+            }
+            else{
+              x.style.stroke="#aaa";
+            }
+
+          })
           
           
         }

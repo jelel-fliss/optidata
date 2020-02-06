@@ -97,16 +97,16 @@ svg{
 
 
 .extern:hover{
-	background-color: rgb(57, 207, 90);
-	border-color: rgb(0, 255, 42);
-	transform: translateX(15px);
+	background-color: rgb(57, 207, 90) !important;
+	border-color: rgb(0, 255, 42) !important;
+	transform: translateX(15px) !important;
 }
 
 .intern:hover{
-	background-color: rgb(247, 44, 44);
-	border-color: rgb(236, 57, 51);
+	background-color: rgb(247, 44, 44) !important;
+	border-color: rgb(236, 57, 51) !important;
 	
-	transform: translateX(15px);
+	transform: translateX(15px) !important;
 	
 }
 

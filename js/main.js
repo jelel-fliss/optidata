@@ -246,15 +246,26 @@ function button_translation(project){
     // x = btn
     if (x.getAttribute("id").includes(project)){
       x.style.transform = "translate(14px,0)";
-      x.style.backgroundColor = "rgb(57, 207, 90)";
-      x.style.borderColor = "rgb(0, 255, 42)";
-    };
-    /*else{
-      //x.style.backgroundColor = "rgb(255, 167, 85)";
-      //x.style.borderColor = "rgb(255, 173, 66)";
+      if (x.getAttribute("class").includes("extern")){
+        // Intern Project => Green Button 
+        x.style.backgroundColor = "rgb(57, 207, 90)";
+        x.style.borderColor = "rgb(0, 255, 42)";
+      }
+      else{
+
+        x.style.backgroundColor = "rgb(247, 44, 44)";
+        x.style.borderColor = "rgb(236, 57, 51)";
+
+      }
+      
+    }
+    else{
+      x.style.backgroundColor = "rgb(255, 167, 85)";
+      x.style.borderColor = "rgb(255, 173, 66)";
+      x.style.transform = "translate(0,0)";
       //
       console.log("");
-    }*/
+    }
   })
   //$(".Fatma Tours_btn").css("left",14);
 }

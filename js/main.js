@@ -99,24 +99,7 @@ $(document).ready(function() {
         return color(d.group);
       })
       .on("click", function(d) {
-        if ((d.group == 3) | (d.group == 4)) {
-
-          var target_lines = [];
-          var all_lines = $("line");
-
-          $.each(all_lines, function(i,x){
-            
-            if( x.id.includes(d.id)){
-              x.style.stroke="red";
-            }
-            else{
-              x.style.stroke="#aaa";
-            }
-
-          })
-          
-          
-        }
+        detect_projet(d);
         d3.select(this).attr("r", 10);
         return info_update(d);
       })
@@ -227,5 +210,39 @@ $(document).ready(function() {
       d.fx = null;
       d.fy = null;
     }
+
+    function detect_projet(data){
+      if ((data.group == 3) | (data.group == 4)) {
+
+        coloring_link_project(data.id);
+        
+        
+      }
+      
+    }
+
+    
+
+
   }); // d3.json
 });
+
+
+function coloring_link_project(project){
+  var all_lines = $("line");
+
+    $.each(all_lines, function(i,x){
+
+      if( x.id.includes(project)){
+
+        x.style.stroke="red";
+
+      }
+      else{
+
+        x.style.stroke="#aaa";
+        
+      }
+
+    })
+}

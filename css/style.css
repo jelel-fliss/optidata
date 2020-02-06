@@ -90,20 +90,27 @@ svg{
 	background-color: rgb(255, 167, 85);
 	border-color: rgb(255, 173, 66);
 	margin : 2px;
+	position: absolute;
+	
 }
 
 
 
 .extern:hover{
-	background-color: rgb(18, 141, 2);
+	background-color: rgb(57, 207, 90);
 	border-color: rgb(0, 255, 42);
+	transform: translateX(15px);
 }
 
 .intern:hover{
 	background-color: rgb(247, 44, 44);
 	border-color: rgb(236, 57, 51);
+	
+	transform: translateX(15px);
+	
 }
 
-.btn:focus{
+.extern:active{
 	background-color: red; 
+	
 }

@@ -11,6 +11,19 @@ $(document).ready(function() {
   ];
 
   d3.json("js/data/graphFile.json").then(function(graph) {
+
+
+    var tip = d3
+      .tip()
+      .attr("class", "d3-tip")
+      .html(function(d) {
+        var output =
+          "<strong>"+d.id+"</strong>";
+        
+        return output;
+      });
+
+
     var label = {
       nodes: [],
       links: []
@@ -63,64 +76,59 @@ $(document).ready(function() {
 
     var svg = d3
       .select("svg")
+      .call(tip)
       .attr("width", width)
       .attr("height", height);
 
     var container = svg.append("g");
 
-    var legend = container.append("g")
+    var legend = container
+      .append("g")
       .attr("class", "legend")
-      
-      .attr("transform","translate(20,0)");
 
+      .attr("transform", "translate(20,0)");
 
     function Legend_Writing(List) {
       List.forEach(function(element, i) {
-        if ( i<2){
+        if (i < 2) {
           var legendrow = legend
-          .append("g")
-          .attr("class", "Legend_Elements")
+            .append("g")
+            .attr("class", "Legend_Elements")
 
-          
-          .attr("transform", "translate("+ (i)*150 +",490)");
-        legendrow
-          .append("circle")
-          .attr("r", 4)
-          .attr("fill", element.color);
+            .attr("transform", "translate(" + i * 150 + ",490)");
+          legendrow
+            .append("circle")
+            .attr("r", 4)
+            .attr("fill", element.color);
 
-        legendrow
-          .append("text")
-          .attr("class", "Legend_Elements")
-          .attr("x", 25)
-          .attr("y", 5)
-          .attr("text-anchor", "start")
-          .style("text-transform", "capitalize")
-          .text(element.poste);
-        }
-        else{
-
+          legendrow
+            .append("text")
+            .attr("class", "Legend_Elements")
+            .attr("x", 25)
+            .attr("y", 5)
+            .attr("text-anchor", "start")
+            .style("text-transform", "capitalize")
+            .text(element.poste);
+        } else {
           var legendrow = legend
-          .append("g")
-          .attr("class", "Legend_Elements")
-          
-          .attr("transform", "translate("+ (i-2)*150 +",510)");
-        legendrow
-          .append("circle")
-          .attr("r", 4)
-          .attr("fill", element.color);
+            .append("g")
+            .attr("class", "Legend_Elements")
 
-        legendrow
-          .append("text")
-          .attr("class", "Legend_Elements")
-          .attr("x", 25)
-          .attr("y", 5)
-          .attr("text-anchor", "start")
-          .style("text-transform", "capitalize")
-          .text(element.poste);
-          
+            .attr("transform", "translate(" + (i - 2) * 150 + ",510)");
+          legendrow
+            .append("circle")
+            .attr("r", 4)
+            .attr("fill", element.color);
 
+          legendrow
+            .append("text")
+            .attr("class", "Legend_Elements")
+            .attr("x", 25)
+            .attr("y", 5)
+            .attr("text-anchor", "start")
+            .style("text-transform", "capitalize")
+            .text(element.poste);
         }
-        
       });
     }
 
@@ -164,14 +172,18 @@ $(document).ready(function() {
       .on("click", function(d) {
         detect_projet(d);
         d3.select(this).attr("r", 10);
+
         return info_update(d);
       })
 
       .on("mouseover", function(d) {
         d3.select(this).attr("r", 7);
+        tip.show(d);
+        
       })
       .on("mouseout", function(d) {
         d3.select(this).attr("r", 5);
+        tip.hide(d);
       })
       .attr("stroke", "#fff");
 
@@ -194,6 +206,7 @@ $(document).ready(function() {
         return null;
       })
       .style("fill", "#555")
+
       .style("pointer-events", "none"); // to prevent mouseover/drag capture
 
     function ticked() {

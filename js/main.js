@@ -3,14 +3,18 @@ $(document).ready(function() {
   var height = 500;
   var color = d3.scaleOrdinal(d3.schemeCategory10);
 
+  Legend_List = [
+    { poste: "Responsable", color: "#1f77b4" },
+    { poste: "Consultant", color: "#ff7f0e" },
+    { poste: "Projet Interne", color: "#d62728" },
+    { poste: "Projet Externe", color: "#2ca02c" }
+  ];
 
   d3.json("js/data/graphFile.json").then(function(graph) {
     var label = {
       nodes: [],
       links: []
     };
-
-   
 
     graph.nodes.forEach(function(d, i) {
       label.nodes.push({ node: d });
@@ -61,7 +65,66 @@ $(document).ready(function() {
       .select("svg")
       .attr("width", width)
       .attr("height", height);
+
     var container = svg.append("g");
+
+    var legend = container.append("g")
+      .attr("class", "legend")
+      
+      .attr("transform","translate(20,0)");
+
+
+    function Legend_Writing(List) {
+      List.forEach(function(element, i) {
+        if ( i<2){
+          var legendrow = legend
+          .append("g")
+          .attr("class", "Legend_Elements")
+
+          
+          .attr("transform", "translate("+ (i)*150 +",490)");
+        legendrow
+          .append("circle")
+          .attr("r", 4)
+          .attr("fill", element.color);
+
+        legendrow
+          .append("text")
+          .attr("class", "Legend_Elements")
+          .attr("x", 25)
+          .attr("y", 5)
+          .attr("text-anchor", "start")
+          .style("text-transform", "capitalize")
+          .text(element.poste);
+        }
+        else{
+
+          var legendrow = legend
+          .append("g")
+          .attr("class", "Legend_Elements")
+          
+          .attr("transform", "translate("+ (i-2)*150 +",510)");
+        legendrow
+          .append("circle")
+          .attr("r", 4)
+          .attr("fill", element.color);
+
+        legendrow
+          .append("text")
+          .attr("class", "Legend_Elements")
+          .attr("x", 25)
+          .attr("y", 5)
+          .attr("text-anchor", "start")
+          .style("text-transform", "capitalize")
+          .text(element.poste);
+          
+
+        }
+        
+      });
+    }
+
+    Legend_Writing(Legend_List);
 
     var link = container
       .append("g")
@@ -70,23 +133,23 @@ $(document).ready(function() {
       .data(graph.links)
       .enter()
       .append("line")
-      .attr("stroke", function(d){
-          /*if (d.target.id){
+      .attr("stroke", function(d) {
+        /*if (d.target.id){
               console.log(d.target.id)
           }*/
-          return "#aaa";
+        return "#aaa";
       })
-      .attr("id",function(d,i){
-          return d.source.id+"_to_"+d.target.id;
+      .attr("id", function(d, i) {
+        return d.source.id + "_to_" + d.target.id;
       })
-      .attr("class",function(d){
-          
-          return "project_relation";
+      .attr("class", function(d) {
+        return "project_relation";
       })
       .attr("stroke-width", "2px");
 
     var node = container
       .append("g")
+
       .attr("class", "nodes")
       .selectAll("g")
       .data(graph.nodes)
@@ -103,6 +166,7 @@ $(document).ready(function() {
         d3.select(this).attr("r", 10);
         return info_update(d);
       })
+
       .on("mouseover", function(d) {
         d3.select(this).attr("r", 7);
       })
@@ -131,8 +195,6 @@ $(document).ready(function() {
       })
       .style("fill", "#555")
       .style("pointer-events", "none"); // to prevent mouseover/drag capture
-
-    
 
     function ticked() {
       node.call(updateNode);
@@ -208,26 +270,15 @@ $(document).ready(function() {
       d.fy = null;
     }
 
-    function detect_projet(data){
+    function detect_projet(data) {
       if ((data.group == 3) | (data.group == 4)) {
-
         coloring_link_project(data.id);
-        
-        
-        
       }
-      
     }
-
-    
-
-
   }); // d3.json
-
-  
 });
 
-function button_translation(project){
+function button_translation(project) {
   //$(project_btn).css("left",14); Works !
 
   //console.log("Button Translation Function Called ! Button should translate !");
@@ -237,68 +288,50 @@ function button_translation(project){
 
   //button.style.transform.translateX(14);
 
-
-  
   //button.style.transform(14, 0);
   var all_btns;
   all_btns = $(".btn");
-  $.each(all_btns, function(i,x){
+  $.each(all_btns, function(i, x) {
     // x = btn
-    if (x.getAttribute("id").includes(project)){
+    if (x.getAttribute("id").includes(project)) {
       x.style.transform = "translate(14px,0)";
-      if (x.getAttribute("class").includes("extern")){
-        // Intern Project => Green Button 
+      if (x.getAttribute("class").includes("extern")) {
+        // Intern Project => Green Button
         x.style.backgroundColor = "rgb(57, 207, 90)";
         x.style.borderColor = "rgb(0, 255, 42)";
-      }
-      else{
-
+      } else {
         x.style.backgroundColor = "rgb(247, 44, 44)";
         x.style.borderColor = "rgb(236, 57, 51)";
-
       }
-      
-    }
-    else{
+    } else {
       x.style.backgroundColor = "rgb(255, 167, 85)";
       x.style.borderColor = "rgb(255, 173, 66)";
       x.style.transform = "translate(0,0)";
       //
-      console.log("");
     }
-  })
+  });
   //$(".Fatma Tours_btn").css("left",14);
 }
 
-
-function coloring_link_project(project){
-
+function coloring_link_project(project) {
   var all_lines = $("line");
 
-    $.each(all_lines, function(i,x){
+  $.each(all_lines, function(i, x) {
+    if (x.id.includes(project)) {
+      x.style.stroke = "red";
+    } else {
+      x.style.stroke = "#aaa";
+    }
+  });
+  $(".avatar").attr("src", "./assets/avatars/" + project + ".png");
+  $(".Name").text(project);
 
-      if( x.id.includes(project)){
-
-        x.style.stroke="red";
-
-      }
-      else{
-
-        x.style.stroke="#aaa";
-        
-      }
-
-    })
-    $(".avatar").attr("src", "./assets/avatars/" + project + ".png");
-    $(".Name").text(project);
-
-    
-
-    button_translation(project+"_btn");
-    //console.log($(".Fatma_Tours_btn"));
+  button_translation(project + "_btn");
+  //console.log($(".Fatma_Tours_btn"));
 }
 
 function info_update(data) {
   $(".avatar").attr("src", "./assets/avatars/" + data.id + ".png");
   $(".Name").text(data.id);
+  $(".Poste").text(data.poste);
 }

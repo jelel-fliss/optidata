@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="/js/d3-tip.js"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -38,6 +39,7 @@
             <div class="btn btn-primary intern" type="button" onclick="coloring_link_project(this.innerHTML);" id="Application RH_btn">Application RH</div>
             <div class="btn btn-primary intern" type="button" onclick="coloring_link_project(this.innerHTML);" id="OptiBot_btn">OptiBot</div>
             <div class="btn btn-primary intern" type="button" onclick="coloring_link_project(this.innerHTML);" id="Site Web Optima_btn">Site Web Optima</div>
+            <div class="btn btn-primary intern" type="button" onclick="coloring_link_project(this.innerHTML);" id="OptiVote_btn">OptiVote</div>
             
             
           </div>
@@ -56,7 +58,7 @@
             <div class="informations">
               <div class="Name"></div>
               <div class="Naissance"></div>
-              <div class="Statut"></div>
+              <div class="Poste"></div>
             </div>
           </div>
 
@@ -70,7 +72,9 @@
           <span class="input-group-text" id="basic-addon1"> Consultant : </span>
         </div>
         <input type="text" class="form-control" placeholder=" Vous cherchez quel consultant ?" aria-label="Username" aria-describedby="basic-addon1">
-        
+        <div class="input-group-append">
+          <button> Search </button>
+        </div>
       </div>
     </div>
     <footer>

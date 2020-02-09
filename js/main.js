@@ -337,7 +337,7 @@ function coloring_link_project(project) {
     }
   });
   $(".avatar").attr("src", "./assets/avatars/" + project + ".png");
-  $(".Name").text(project);
+  $(".Profile").text(project);
 
   button_translation(project + "_btn");
   //console.log($(".Fatma_Tours_btn"));
@@ -345,6 +345,6 @@ function coloring_link_project(project) {
 
 function info_update(data) {
   $(".avatar").attr("src", "./assets/avatars/" + data.id + ".png");
-  $(".Name").text(data.id);
-  $(".Poste").text(data.poste);
+  $(".Profile").text(data.id);
+ 
 }

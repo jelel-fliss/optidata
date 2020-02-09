@@ -136,3 +136,9 @@ footer{
 .projects{
 	margin-bottom: 15px;
 }
+
+.Profile{
+	font-size: 25px;
+	font-family: Helvetica;
+	font-weight: bold
+}

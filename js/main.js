@@ -331,7 +331,7 @@ function coloring_link_project(project) {
 
   $.each(all_lines, function(i, x) {
     if (x.id.includes(project)) {
-      x.style.stroke = "red";
+      x.style.stroke = "orange";
     } else {
       x.style.stroke = "#aaa";
     }
